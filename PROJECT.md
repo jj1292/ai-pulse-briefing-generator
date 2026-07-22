@@ -72,7 +72,7 @@ ai-intelligence-radar/
 - 已实现相关性、证据、覆盖度、去重与时效、判断价值、过程可靠性六维评分；
 - 当前基线为 2/3 案例通过，平均 1.89/2；
 - 已明确暴露“48 小时外旧信号仍被输出”的产品缺口；
-- 草稿 PR #5 已创建，Actions run #9 成功；需先合并 PR #4，再重定向 PR #5 到 `main`。
+- PR #4 与 PR #5 已依次 squash 合并；v0.3 已进入 `main`，合并提交为 `6f82dc6`，最终 Actions run #12 成功。
 
 ## Agent 化升级构思
 
@@ -84,11 +84,11 @@ ai-intelligence-radar/
 
 ## 下一步
 
-1. 合并 PR #4，将 PR #5 重定向到 `main` 并复核 CI。
-2. 实现 48 小时时效过滤，让当前风险案例达到通过门槛。
-3. 实现可观察、可停止、可恢复的最小 Agent Loop。
-4. 接入官方 Atom 和 Release Notes 采集器，再配置 X Developer Project 和 Reddit OAuth。
-5. 导入并脱敏原 Dify DSL，完成自动调度、可配置知识库写入及周/月复盘。
+1. 实现 48 小时时效过滤，让当前风险案例达到通过门槛。
+2. 实现可观察、可停止、可恢复的最小 Agent Loop。
+3. 接入官方 Atom 和 Release Notes 采集器，再配置 X Developer Project 和 Reddit OAuth。
+4. 导入并脱敏原 Dify DSL，完成自动调度、可配置知识库写入及周/月复盘。
+5. 把 3 个最小评测案例逐步扩展到 12 个真实案例。
 
 ## 相关项目
 
