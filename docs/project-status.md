@@ -14,9 +14,10 @@
 - Agent Harness 新目标：JOJO 希望将项目升级为 AI Loop Agent，并通过真实工程掌握任务编排、四层记忆、工具调用、状态管理、Checkpoint/Resume、Guardrail、Tracing 与 Eval，同时形成对自研 Loop、OpenAI Agents SDK、LangGraph、AutoGen 和 Dify 的架构判断力。初步建议采用“外层确定性状态机 + 内层模型决策循环”，先单 Agent 后多 Agent，并用同一任务跨框架对照。构思文档：`01_Projects/AI行业情报与知识库/Agent Harness架构构思-v0.1.md`。
 - 评估能力前置：JOJO 当前希望先从 AI 产品角度建立评估思维。已形成 `01_Projects/AI行业情报与知识库/AI产品评估入门与Agent评测框架-v0.1.md`，将评估定义为“真实场景 × 明确意图 × 可观察行为 × 判定标准 × 改进决策”；第一阶段先建立 12 个 Eval Case、0–2 分 Rubric、一票否决规则和当前管道 baseline，再实现 Agent Harness。
 - 2026-07-22 v0.3 评测基线：已从 PR #4 最新提交 `a3878ad` 建立独立分支 `agent/eval-baseline-v0.3`。新增 3 个可复现 Eval Case、六维 0–2 分评分器、一票否决规则、`--strict` 门禁模式、基线报告、3 项评测测试及中英文 README/CI 更新。当前结果为 3 个案例中 2 个通过、1 个未通过，平均 `1.89/2`；明确发现当前管道没有排除 48 小时窗口外的旧信号。远端提交 `b217c32`，Actions run #9 成功。
-- 草稿 PR #5：`https://github.com/jj1292/ai-pulse-briefing-generator/pull/5`，以 PR #4 分支为 base 的堆叠 PR，共 9 个文件、470 additions / 10 deletions，当前可合并但未合并。正确顺序是先合并 PR #4，再将 PR #5 base 改为 `main` 并复核 CI 后合并。
+- 2026-07-22 v0.3 合并：PR #4 先以 squash 方式合并，提交 `d70fb7`；随后 PR #5 重定向到 `main`。因 squash 导致堆叠分支历史分叉，已仅重建 v0.3 分支提交到最新 `main`，最终 head `c6d3a4a`，Actions run #12 成功。PR #5 已 squash 合并，`main` 提交 `6f82dc6`。
+- 独立目录决策：项目源码、架构、评测、项目状态和后续产物统一放在 `/Users/wingsjing/Documents/Codex/ai-intelligence-radar`；原 `Obsidian Vault/01_Projects/AI行业情报与知识库` 已移除，Obsidian 只保留一个位置索引，不再承载项目正文。
 - Obsidian 项目首页：`01_Projects/AI行业情报与知识库/00-项目首页.md`。未把示例假数据写入真实知识库。
-- 待跟进：GitHub 设置页的仓库重命名提交因页面连接持续超时未成功，仍需在 Settings → General 将 `ai-pulse-briefing-generator` 改为 `ai-intelligence-radar`。先合并 PR #4，再重定向并合并 PR #5；随后按评测暴露的缺口，先实现 48 小时时效过滤并让风险案例从 `1.67` 提升到通过，再进入最小 Agent Loop。之后再配置 X Developer Project / `X_BEARER_TOKEN`、Reddit OAuth、导入脱敏 Dify DSL，并实现官方采集器、事件级去重、失败重试和真实 Obsidian 写入。
+- 待跟进：GitHub 设置页的仓库重命名提交因页面连接持续超时未成功，仍需在 Settings → General 将 `ai-pulse-briefing-generator` 改为 `ai-intelligence-radar`。下一步按评测暴露的缺口实现 48 小时时效过滤并让风险案例从 `1.67` 提升到通过，再进入最小 Agent Loop。之后再配置 X Developer Project / `X_BEARER_TOKEN`、Reddit OAuth、导入脱敏 Dify DSL，并实现官方采集器、事件级去重、失败重试和可配置知识库写入。
 - 相关链接：https://github.com/jj1292/ai-pulse-briefing-generator
 - 草稿 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/1
 - v0.2 草稿 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/2
