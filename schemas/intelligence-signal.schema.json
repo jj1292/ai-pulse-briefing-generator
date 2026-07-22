@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/intelligence-signal.schema.json",
+  "title": "AI Intelligence Signal",
+  "type": "object",
+  "required": [
+    "title",
+    "canonical_url",
+    "source_name",
+    "source_tier",
+    "platform",
+    "company",
+    "published_at",
+    "summary",
+    "why_it_matters",
+    "topics"
+  ],
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "canonical_url": {"type": "string", "format": "uri"},
+    "source_name": {"type": "string", "minLength": 1},
+    "source_tier": {"type": "integer", "minimum": 1, "maximum": 3},
+    "platform": {
+      "type": "string",
+      "enum": ["official", "github", "x", "reddit", "other"]
+    },
+    "company": {"type": "string", "minLength": 1},
+    "author": {"type": "string"},
+    "published_at": {"type": "string", "format": "date-time"},
+    "retrieved_at": {"type": "string", "format": "date-time"},
+    "summary": {"type": "string", "minLength": 1},
+    "why_it_matters": {"type": "string", "minLength": 1},
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string"},
+      "maxItems": 3
+    },
+    "topics": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "impact_score": {"type": "integer", "minimum": 1, "maximum": 5},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  },
+  "additionalProperties": true
+}
