@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/jj1292/ai-intelligence-radar/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/jj1292/ai-intelligence-radar/test.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=tests&color=22C55E" alt="Tests" /></a>
-  <img src="https://img.shields.io/badge/version-v0.2.0-7C3AED?style=for-the-badge" alt="Version v0.2.0" />
+  <img src="https://img.shields.io/badge/version-v0.3.0-7C3AED?style=for-the-badge" alt="Version v0.3.0" />
   <img src="https://img.shields.io/badge/Python-3.10%2B-2563EB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/license-MIT-06B6D4?style=for-the-badge" alt="MIT License" />
 </p>
@@ -48,6 +48,9 @@
 
 > [!TIP]
 > **目标不是替你读完互联网，而是每天留下少量、可复核、以后还能用的知识。**
+
+> [!NOTE]
+> **v0.3 开始采用评估先行：先用固定案例证明当前系统哪里可靠、哪里失败，再逐步加入 Agent Loop。**
 
 ## 🌈 当前能力
 
@@ -149,7 +152,32 @@ python3 build_knowledge_base.py \
 python3 -m unittest discover -s tests -v
 ```
 
-![tests](https://img.shields.io/badge/tests-8%20passed-22C55E?style=for-the-badge&logo=checkmarx&logoColor=white)
+![tests](https://img.shields.io/badge/tests-11%20passed-22C55E?style=for-the-badge&logo=checkmarx&logoColor=white)
+
+### 4. 运行产品评测
+
+```bash
+python3 evaluate_radar.py \
+  --cases evals/cases.jsonl \
+  --output evals/baseline-report.md
+```
+
+当前基线：**3 个案例，2 个通过，1 个未通过，平均分 1.89/2**。已知缺口是系统尚未过滤 48 小时窗口之外的旧信号。详见 [`evals/baseline-report.md`](evals/baseline-report.md)。
+
+## 🧪 评估先行
+
+AI 产品不能只看一次输出是否“像样”。本项目从六个维度持续评估同一组真实任务：
+
+| 维度 | 核心问题 |
+| --- | --- |
+| 🎯 相关性 | 应该出现的趋势是否出现，噪声是否被挡住？ |
+| 🔗 证据完整性 | 是否保留时间、短证据和原始来源？ |
+| 🧭 覆盖度 | 任务要求的关键信号是否完整？ |
+| ⏱️ 去重与时效 | 重复和过期信息是否被排除？ |
+| 💡 判断价值 | 是否解释“为什么重要”并标注判断边界？ |
+| ⚙️ 过程可靠性 | 卡片、趋势报告与运行状态是否一致？ |
+
+每项使用 `0 / 1 / 2` 三档评分，并设置来源混淆、链接缺失、编造证据、凭证泄露和越权操作等一票否决项。完整规则见 [`evals/rubric.md`](evals/rubric.md)。
 
 ## 💜 知识库输出
 
@@ -190,16 +218,22 @@ ai-intelligence-radar/
 | :---: | --- | :---: |
 | `v0.1` | 可运行简报、输入契约、测试与 CI | ✅ Done |
 | `v0.2` | 来源注册表、情报 Schema、Obsidian 卡片、趋势雷达 | ✅ Done |
-| `v0.3` | 官方采集器、X API、Reddit OAuth、48 小时时效、事件去重 | 🚧 Next |
-| `v0.4` | 导入 Dify DSL、定时运行、证据校验、自动写入 | 🧭 Planned |
-| `v1.0` | 周/月复盘、来源质量评分、主题订阅、评测指标 | 🌟 Vision |
+| `v0.3` | Eval Contract、3 个基线案例、评分器与可复现报告 | 🚧 Current |
+| `v0.4` | 修复 48 小时时效缺口，加入受控的最小 Agent Loop | 🧭 Next |
+| `v0.5` | 官方采集器、X API、Reddit OAuth、状态与断点恢复 | 🧭 Planned |
+| `v1.0` | 记忆、回放评测、周/月复盘、主题订阅与来源质量评分 | 🌟 Vision |
 
 ## 📚 文档
 
+- 🗺️ [`项目总览`](PROJECT.md)
 - 📘 [`v0.2 PRD`](docs/PRD-AI-Intelligence-Radar-v0.2.md)
+- 🧠 [`Agent Harness 架构构思`](docs/agent-harness-architecture.md)
+- 🎯 [`AI 产品评估与 Agent 评测指南`](docs/ai-product-evaluation-guide.md)
 - 🔄 [`Dify 工作流蓝图`](docs/dify-workflow.md)
 - 🧩 [`情报信号 Schema`](schemas/intelligence-signal.schema.json)
 - 📡 [`来源注册表`](config/sources.json)
+- 🧪 [`评测规则`](evals/rubric.md)
+- 📊 [`v0.3 基线报告`](evals/baseline-report.md)
 - 📝 [`Changelog`](CHANGELOG.md)
 
 ---

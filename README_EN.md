@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/jj1292/ai-intelligence-radar/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/jj1292/ai-intelligence-radar/test.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=tests&color=22C55E" alt="Tests" /></a>
-  <img src="https://img.shields.io/badge/version-v0.2.0-7C3AED?style=for-the-badge" alt="Version v0.2.0" />
+  <img src="https://img.shields.io/badge/version-v0.3.0-7C3AED?style=for-the-badge" alt="Version v0.3.0" />
   <img src="https://img.shields.io/badge/Python-3.10%2B-2563EB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/license-MIT-06B6D4?style=for-the-badge" alt="MIT License" />
 </p>
@@ -48,6 +48,9 @@ There is no shortage of daily information, but only a small number of signals ca
 
 > [!TIP]
 > **The goal is not to read the entire internet for you. It is to preserve a small set of verifiable insights that remain useful over time.**
+
+> [!NOTE]
+> **Starting with v0.3, the project is evaluation-first: fixed cases expose what works and what fails before an Agent Loop is added.**
 
 ## 🌈 Current Capabilities
 
@@ -149,7 +152,32 @@ python3 build_knowledge_base.py \
 python3 -m unittest discover -s tests -v
 ```
 
-![tests](https://img.shields.io/badge/tests-8%20passed-22C55E?style=for-the-badge&logo=checkmarx&logoColor=white)
+![tests](https://img.shields.io/badge/tests-11%20passed-22C55E?style=for-the-badge&logo=checkmarx&logoColor=white)
+
+### 4. Run the product evaluation
+
+```bash
+python3 evaluate_radar.py \
+  --cases evals/cases.jsonl \
+  --output evals/baseline-report.md
+```
+
+Current baseline: **3 cases, 2 passed, 1 failed, average score 1.89/2**. The known gap is that signals older than the 48-hour window are not filtered yet. See [`evals/baseline-report.md`](evals/baseline-report.md).
+
+## 🧪 Evaluation First
+
+An AI product cannot be judged by whether one output merely looks plausible. This project repeatedly evaluates the same real tasks across six dimensions:
+
+| Dimension | Core question |
+| --- | --- |
+| 🎯 Relevance | Are expected trends surfaced while noise is blocked? |
+| 🔗 Evidence | Are time, short evidence, and original sources preserved? |
+| 🧭 Coverage | Are the task's required signals complete? |
+| ⏱️ Deduplication & freshness | Are duplicates and stale items excluded? |
+| 💡 Judgment value | Does the output explain why it matters and state its limits? |
+| ⚙️ Process reliability | Do cards, trend reports, and run state agree? |
+
+Each dimension uses a `0 / 1 / 2` scale. Source-tier confusion, missing source links, fabricated evidence, credential leaks, and unauthorized external actions are veto conditions. See [`evals/rubric.md`](evals/rubric.md) for the complete contract.
 
 ## 💜 Knowledge Base Output
 
@@ -190,16 +218,22 @@ The specification is defined in [`schemas/intelligence-signal.schema.json`](sche
 | :---: | --- | :---: |
 | `v0.1` | Runnable briefing, input contract, tests, and CI | ✅ Done |
 | `v0.2` | Source registry, intelligence schema, Obsidian cards, and trend radar | ✅ Done |
-| `v0.3` | Official collectors, X API, Reddit OAuth, 48-hour freshness, and event deduplication | 🚧 Next |
-| `v0.4` | Importable Dify DSL, scheduled runs, evidence validation, and automated writeback | 🧭 Planned |
-| `v1.0` | Weekly and monthly reviews, source-quality scoring, topic subscriptions, and evaluation metrics | 🌟 Vision |
+| `v0.3` | Eval Contract, 3 baseline cases, scorer, and reproducible report | 🚧 Current |
+| `v0.4` | Fix the 48-hour freshness gap and add a controlled minimal Agent Loop | 🧭 Next |
+| `v0.5` | Official collectors, X API, Reddit OAuth, state, and checkpoint recovery | 🧭 Planned |
+| `v1.0` | Memory, replay evaluation, periodic reviews, subscriptions, and source-quality scoring | 🌟 Vision |
 
 ## 📚 Documentation
 
+- 🗺️ [`Project overview`](PROJECT.md)
 - 📘 [`v0.2 PRD`](docs/PRD-AI-Intelligence-Radar-v0.2.md)
+- 🧠 [`Agent Harness architecture`](docs/agent-harness-architecture.md)
+- 🎯 [`AI product and agent evaluation guide`](docs/ai-product-evaluation-guide.md)
 - 🔄 [`Dify workflow blueprint`](docs/dify-workflow.md)
 - 🧩 [`Intelligence signal schema`](schemas/intelligence-signal.schema.json)
 - 📡 [`Source registry`](config/sources.json)
+- 🧪 [`Evaluation rubric`](evals/rubric.md)
+- 📊 [`v0.3 baseline report`](evals/baseline-report.md)
 - 📝 [`Changelog`](CHANGELOG.md)
 
 ---
