@@ -1,0 +1,25 @@
+# GitHub AI Pulse 项目运营
+
+- 当前状态：GitHub 账号 `jj1292` 有 2 个公开仓库；主运营目标确定为 `jj1292/ai-pulse-briefing-generator`，`AiLearning` 为上游 Fork，不作为主要获 Star 项目。`v0.1.0` 已通过 PR #1 合并到 `main`。
+- 关键目标：通过真实可运行产品、持续内容产出和公开传播，提高仓库自然 Star 与可信活跃度；不采用刷 Star、互赞机器人或虚假提交。
+- 2026-07-22 诊断：主仓库当前 1 Star、16 次提交，提交集中在 2025-12-22；代码可运行，但新闻检索、过滤和摘要均为固定模拟数据。仓库缺少标准 `README.md`、License、测试、Release 和自动运行机制。
+- 2026-07-22 v0.1.0：新增 README、MIT License、Changelog、Dify 工作流升级蓝图、JSON 输入示例、单元测试和 GitHub Actions；筛选与排序已改为基于真实输入执行，默认演示数据明确标注为非实时搜索。4 项单元测试、Python 编译、示例生成和 `git diff --check` 均通过。
+- 2026-07-22 发布：用户完成 ChatGPT Codex Connector 安装并仅授权目标仓库；通过连接器创建远端分支和单一提交 `8f98b7b`，创建草稿 PR #1（9 个文件，479 additions / 143 deletions）。GitHub Actions `test` run #1 已完成且成功，PR 当前可合并。
+- 2026-07-22 合并：JOJO 确认后，将 PR #1 标记为 ready 并 squash 合并；合并提交 `4fddc48`。远端复核确认 PR 已 merged，`main` 分支新版 README 已生效。
+- 2026-07-22 v0.2 升级：项目定位升级为 AI Intelligence Radar，从每日简报扩展为“一手来源—情报信号—知识卡片—趋势雷达—Obsidian”的个人认知系统。新增 10 个来源入口（8 ready、X/Reddit 2 requires_auth）、T1/T2/T3 来源分级、Intelligence Signal Schema、Obsidian 卡片与趋势生成器、PRD 和 Dify 蓝图；本地 8 项测试通过，官方 Codex/Claude Code Atom 源返回 HTTP 200。
+- 草稿 PR #2：`https://github.com/jj1292/ai-pulse-briefing-generator/pull/2`，分支 `agent/ai-intelligence-radar-v0.2`，提交 `7cbf212`，12 个文件；GitHub Actions run #3 成功，PR 可合并，等待 JOJO 确认。
+- 2026-07-22 v0.2 合并：JOJO 确认后将 PR #2 squash 合并到 `main`，合并提交 `67a0d79`。
+- 2026-07-22 README 视觉合并：PR #3 已 squash 合并到 `main`，合并提交 `e53f951`；新增紫—蓝—青 Hero SVG、彩色状态徽章、Codex/Claude/Gemini/X/Reddit/Obsidian 图标标签、彩色 Mermaid 流程、来源矩阵和 Roadmap。
+- README 双语与命名统一：`README.md` 保持完整简体中文版，新增完整英文版 `README_EN.md`，两份文件顶部可互相切换且视觉结构一致；产品显示名统一为 `AI Intelligence Radar`，仓库目标名称为 `ai-intelligence-radar`，README 徽章链接已预先更新。草稿 PR #4：`https://github.com/jj1292/ai-pulse-briefing-generator/pull/4`，最新提交 `a3878ad`；仅涉及两份 README，本地 8 项测试与远端 Actions run #8 均成功，PR 可合并。
+- Agent Harness 新目标：JOJO 希望将项目升级为 AI Loop Agent，并通过真实工程掌握任务编排、四层记忆、工具调用、状态管理、Checkpoint/Resume、Guardrail、Tracing 与 Eval，同时形成对自研 Loop、OpenAI Agents SDK、LangGraph、AutoGen 和 Dify 的架构判断力。初步建议采用“外层确定性状态机 + 内层模型决策循环”，先单 Agent 后多 Agent，并用同一任务跨框架对照。构思文档：`01_Projects/AI行业情报与知识库/Agent Harness架构构思-v0.1.md`。
+- 评估能力前置：JOJO 当前希望先从 AI 产品角度建立评估思维。已形成 `01_Projects/AI行业情报与知识库/AI产品评估入门与Agent评测框架-v0.1.md`，将评估定义为“真实场景 × 明确意图 × 可观察行为 × 判定标准 × 改进决策”；第一阶段先建立 12 个 Eval Case、0–2 分 Rubric、一票否决规则和当前管道 baseline，再实现 Agent Harness。
+- 2026-07-22 v0.3 评测基线：已从 PR #4 最新提交 `a3878ad` 建立独立分支 `agent/eval-baseline-v0.3`。新增 3 个可复现 Eval Case、六维 0–2 分评分器、一票否决规则、`--strict` 门禁模式、基线报告、3 项评测测试及中英文 README/CI 更新。当前结果为 3 个案例中 2 个通过、1 个未通过，平均 `1.89/2`；明确发现当前管道没有排除 48 小时窗口外的旧信号。远端提交 `b217c32`，Actions run #9 成功。
+- 草稿 PR #5：`https://github.com/jj1292/ai-pulse-briefing-generator/pull/5`，以 PR #4 分支为 base 的堆叠 PR，共 9 个文件、470 additions / 10 deletions，当前可合并但未合并。正确顺序是先合并 PR #4，再将 PR #5 base 改为 `main` 并复核 CI 后合并。
+- Obsidian 项目首页：`01_Projects/AI行业情报与知识库/00-项目首页.md`。未把示例假数据写入真实知识库。
+- 待跟进：GitHub 设置页的仓库重命名提交因页面连接持续超时未成功，仍需在 Settings → General 将 `ai-pulse-briefing-generator` 改为 `ai-intelligence-radar`。先合并 PR #4，再重定向并合并 PR #5；随后按评测暴露的缺口，先实现 48 小时时效过滤并让风险案例从 `1.67` 提升到通过，再进入最小 Agent Loop。之后再配置 X Developer Project / `X_BEARER_TOKEN`、Reddit OAuth、导入脱敏 Dify DSL，并实现官方采集器、事件级去重、失败重试和真实 Obsidian 写入。
+- 相关链接：https://github.com/jj1292/ai-pulse-briefing-generator
+- 草稿 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/1
+- v0.2 草稿 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/2
+- README 视觉 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/3
+- README 双语 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/4
+- v0.3 评测基线 PR：https://github.com/jj1292/ai-pulse-briefing-generator/pull/5
