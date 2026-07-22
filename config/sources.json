@@ -1,0 +1,118 @@
+[
+  {
+    "id": "openai_codex_changelog",
+    "name": "Codex changelog",
+    "company": "OpenAI",
+    "source_tier": 1,
+    "channel": "official_changelog",
+    "collection_mode": "dify_web",
+    "url": "https://learn.chatgpt.com/docs/changelog",
+    "status": "ready",
+    "topics": ["codex", "coding-agents", "developer-tools"]
+  },
+  {
+    "id": "openai_api_changelog",
+    "name": "OpenAI API changelog",
+    "company": "OpenAI",
+    "source_tier": 1,
+    "channel": "official_changelog",
+    "collection_mode": "dify_web",
+    "url": "https://developers.openai.com/api/docs/changelog",
+    "status": "ready",
+    "topics": ["openai-api", "models", "agents"]
+  },
+  {
+    "id": "openai_codex_releases",
+    "name": "openai/codex releases",
+    "company": "OpenAI",
+    "source_tier": 1,
+    "channel": "official_repository",
+    "collection_mode": "atom",
+    "url": "https://github.com/openai/codex/releases.atom",
+    "status": "ready",
+    "topics": ["codex", "coding-agents", "open-source"]
+  },
+  {
+    "id": "anthropic_platform_release_notes",
+    "name": "Claude Platform release notes",
+    "company": "Anthropic",
+    "source_tier": 1,
+    "channel": "official_changelog",
+    "collection_mode": "dify_web",
+    "url": "https://platform.claude.com/docs/en/release-notes/overview",
+    "status": "ready",
+    "topics": ["claude", "claude-api", "models"]
+  },
+  {
+    "id": "anthropic_newsroom",
+    "name": "Anthropic newsroom",
+    "company": "Anthropic",
+    "source_tier": 1,
+    "channel": "official_newsroom",
+    "collection_mode": "dify_web",
+    "url": "https://www.anthropic.com/news",
+    "status": "ready",
+    "topics": ["claude", "research", "policy", "company"]
+  },
+  {
+    "id": "claude_code_releases",
+    "name": "anthropics/claude-code releases",
+    "company": "Anthropic",
+    "source_tier": 1,
+    "channel": "official_repository",
+    "collection_mode": "atom",
+    "url": "https://github.com/anthropics/claude-code/releases.atom",
+    "status": "ready",
+    "topics": ["claude-code", "coding-agents", "developer-tools"]
+  },
+  {
+    "id": "gemini_api_release_notes",
+    "name": "Gemini API release notes",
+    "company": "Google",
+    "source_tier": 1,
+    "channel": "official_changelog",
+    "collection_mode": "dify_web",
+    "url": "https://ai.google.dev/gemini-api/docs/changelog",
+    "status": "ready",
+    "topics": ["gemini", "gemini-api", "models", "agents"]
+  },
+  {
+    "id": "google_ai_blog",
+    "name": "Google AI updates",
+    "company": "Google",
+    "source_tier": 1,
+    "channel": "official_newsroom",
+    "collection_mode": "dify_web",
+    "url": "https://blog.google/technology/ai/",
+    "status": "ready",
+    "topics": ["gemini", "research", "products", "company"]
+  },
+  {
+    "id": "x_frontier_ai_accounts",
+    "name": "Frontier AI official X accounts",
+    "company": "Multiple",
+    "source_tier": 2,
+    "channel": "x",
+    "collection_mode": "x_recent_search",
+    "url": "https://api.x.com/2/tweets/search/recent",
+    "status": "requires_auth",
+    "auth_env": ["X_BEARER_TOKEN"],
+    "query": "(from:OpenAI OR from:OpenAIDevs OR from:AnthropicAI OR from:GoogleDeepMind OR from:GoogleAI) -is:retweet has:links",
+    "topics": ["models", "agents", "research", "products"],
+    "notes": "Enable only after verifying account handles and X developer access."
+  },
+  {
+    "id": "reddit_ai_communities",
+    "name": "Selected AI communities on Reddit",
+    "company": "Community",
+    "source_tier": 3,
+    "channel": "reddit",
+    "collection_mode": "reddit_oauth",
+    "url": "https://oauth.reddit.com/search",
+    "status": "requires_auth",
+    "auth_env": ["REDDIT_CLIENT_ID", "REDDIT_CLIENT_SECRET", "REDDIT_USER_AGENT"],
+    "targets": ["LocalLLaMA", "MachineLearning", "OpenAI", "ClaudeAI", "GeminiAI"],
+    "topics": ["community-feedback", "use-cases", "problems", "emerging-signals"],
+    "notes": "Store links, minimal metadata, and derived notes; do not bulk-retain full user content."
+  }
+]

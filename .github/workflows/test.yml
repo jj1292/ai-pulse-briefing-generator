@@ -23,3 +23,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Run demo
         run: python generate_briefing.py --output /tmp/final_briefing.md
+      - name: Validate source registry
+        run: python source_registry.py --config config/sources.json
+      - name: Build sample knowledge base
+        run: python build_knowledge_base.py --input examples/intelligence_signals.json --output /tmp/ai-radar --date 2026-07-22

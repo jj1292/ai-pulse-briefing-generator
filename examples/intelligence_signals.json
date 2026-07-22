@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Coding agent adds a new review workflow",
+    "canonical_url": "https://example.com/codex-review-workflow",
+    "source_name": "Official product changelog",
+    "source_tier": 1,
+    "platform": "official",
+    "company": "OpenAI",
+    "published_at": "2026-07-22T08:00:00+08:00",
+    "summary": "产品新增面向代码审查的工作流。",
+    "why_it_matters": "这说明编码智能体正从单次生成走向可验证的软件交付流程。",
+    "evidence": ["官方更新明确列出代码审查工作流。"],
+    "topics": ["coding-agents", "software-delivery"],
+    "impact_score": 4,
+    "confidence": 0.95
+  },
+  {
+    "title": "Agent platform improves long-running task execution",
+    "canonical_url": "https://example.com/claude-long-running-agents",
+    "source_name": "Official release notes",
+    "source_tier": 1,
+    "platform": "official",
+    "company": "Anthropic",
+    "published_at": "2026-07-22T09:00:00+08:00",
+    "summary": "平台增强了长任务执行和状态保持能力。",
+    "why_it_matters": "多家公司都在增强长任务能力，可能代表智能体竞争重点从回答质量转向持续执行。",
+    "evidence": ["发布说明提到长任务执行和状态保持。"],
+    "topics": ["coding-agents", "long-running-agents"],
+    "impact_score": 4,
+    "confidence": 0.92
+  },
+  {
+    "title": "Developers discuss reliability limits in production agents",
+    "canonical_url": "https://example.com/reddit-agent-reliability",
+    "source_name": "Selected Reddit community",
+    "source_tier": 3,
+    "platform": "reddit",
+    "company": "Community",
+    "published_at": "2026-07-22T10:00:00+08:00",
+    "summary": "开发者集中讨论生产环境中智能体的稳定性与成本问题。",
+    "why_it_matters": "社区反馈可作为需求和风险信号，但需要官方数据或复现实验进一步验证。",
+    "evidence": ["多个讨论聚焦失败恢复、成本和可观测性。"],
+    "topics": ["coding-agents", "reliability", "community-feedback"],
+    "impact_score": 3,
+    "confidence": 0.65
+  }
+]
